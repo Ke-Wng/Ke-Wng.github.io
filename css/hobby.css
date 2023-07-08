@@ -1,0 +1,35 @@
+body{
+    background-color: green;
+}
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+	align-items: center;
+    width: 600px;
+    margin: auto;
+    margin-top: 35vh;
+}
+.container div{
+    border: solid 3px yellow;
+    display: inline-flexbox;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: rebeccapurple;
+    /* box-shadow: rgba(0,0,0,0.5) 0 0 0 3000px; */
+    /* 动画结束后不还原 */
+    animation-fill-mode: forwards;
+    z-index: 2;
+}
+@keyframes passer {
+    /* 要让某效果一直保持，要设置0和100的位置，有始有终 */
+    0% {box-shadow: green 0 0 0 3000px;} 
+    20% {transform: scale(1.5); background: transparent;}
+    30% {transform: scale(1.2);}
+    100% {transform: scale(20); background: transparent; box-shadow: green 0 0 0 3000px;}
+}
+@keyframes shrink {
+    0% {}
+    100% {transform: scale(0);}
+}

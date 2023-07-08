@@ -1,0 +1,134 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+div{
+    box-sizing: border-box;
+}
+li{
+    list-style-type: none;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+.bubble span{
+    width: 30px;
+    height: 30px;
+    background-color: rgba(52, 234, 234, 0.778);
+    margin: 0 4px;
+    border-radius: 50%;
+    /* 多重阴影 */
+    box-shadow: 0 0 0 10px #4fc3dc44, 0 0 50px #4fc3dc, 0 0 100px #4fc3dc;
+    /* 无限循环播放 */
+    animation: flow 15s linear infinite;
+    /* var通过html传参,calc用于动态参数 */
+    animation-duration: calc(125s / var(--i));
+}
+.bubble span:nth-child(even){
+    background-color: #ff2d75;
+    box-shadow: 0 0 0 10px #ff2d7544, 0 0 50px #ff2d75, 0 0 100px #ff2d75;
+}
+@keyframes flow {
+    0% {transform: translateY(100vh) scale(0);}
+    100% {transform: translateY(-10px) scale(1);}
+}
+.container{
+    background-color: #336699;
+    display: flex;
+    /* 不设置高度时盒子会被撑大缩小，所以设置了minheight */
+    min-height: 100vh; 
+    /* 1 vh = 1% * 窗口 */
+    perspective: 900px;
+    /* 透视要加到舞台上，即img的上上级*/
+}
+.wrap{
+    /* flex子元素margin:auto自动上下左右居中，否则只水平 */
+    margin: 28vh auto;
+    /* 直接对img的父盒子设置大小，img将被缩放 */
+    width: 150px;
+    height: 210px;
+    transform-style: preserve-3d;
+    position: relative;
+    /* pointer-events: none; */
+}
+.wrap img{
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.menuleft{
+    float: left;
+    position: absolute;
+    width: 320px;
+    height: 380px;
+    z-index: 12;
+    margin-top: 20vh;
+    background-color: rgb(0, 153, 204);
+    transform: translateX(-263px);
+    border-radius: 20px;
+}
+.menuleft .content{
+    position: absolute;
+    height: 100%;
+    width: 82%;
+    background-color: #fff;
+    padding-top: 22px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 9px -2px 15px 0px #00000040;
+}
+.menuleft li{
+    margin-left: 20px;
+    border-bottom: #CCCCCC 2px solid;
+}
+.menuleft ul{
+    line-height: 35px;
+}
+.menuleft h2{
+    background-color: #99CC33;
+    margin-top: 15px;
+    padding-left: 20px;
+}
+.menuleft ul span:hover{
+    color: #33CC99;
+}
+.menuleft ul a:hover{
+    color: #33CC99;
+}
+
+
+
+.menuright{
+    float: right;
+    position: absolute;
+    width: 300px;
+    height: 400px;
+    z-index: 12;
+    margin-top: 20vh;
+    /* background-color: aqua; */
+    transform: translateX(240px);
+}
+.menuright .content{
+    position: absolute;
+    height: 100%;
+    width: 82%;
+    background-color: gray;
+    padding: 20px 15px;
+}
+.menuright .button{
+    float: left;
+    height: 100%;
+    width: 18%;
+    background-color: rebeccapurple;
+    text-align: center;
+}
+.menuright ul{
+    line-height: 27px;
+}

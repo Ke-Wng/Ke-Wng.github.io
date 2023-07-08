@@ -1,0 +1,133 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #0a2a43;
+}
+.bigImage{
+    height: 100vh;
+    position: relative;
+    transition: all 1s ease;
+    background-image: url(../material/img/xingkong\ bcg.png);
+    background-repeat: no-repeat;
+    /* 背景图平铺 */
+    z-index: -1000;
+    background-size: cover;
+    overflow: hidden;
+    /* background-clip: border-box; */
+    /* border-bottom: 200px; */
+}
+.bigImage img{
+    position: absolute;
+}
+#text{
+    z-index: 10;
+    position: absolute;
+    font-size: 10em;
+    color: white;
+    left: 350px;
+    top: 100px;
+}
+#moon{
+    width: 500px;
+    right: 60px;
+}
+#backMountain{
+    clip:rect(0px 6000px 90vh 0px);
+    z-index: -2;
+    width: 100%;
+    /* background: linear-gradient(to bottom, rgba(255,255,255,0), white 100%); */
+}
+#frontMountain{
+    width: 100%;
+}
+section::before{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    background: linear-gradient(to top, #0a2a43, transparent);
+    z-index: 1000;
+}
+.container{
+    width: 80%;
+    margin: 0 auto;
+    background-color: #CCCCCC;
+    position: relative;
+    padding-bottom: 20px;
+    padding-top: 50px;
+}
+.container h3{
+    color: rgba(37, 36, 36, 0.738);
+    margin-left: 40px;
+    margin-right: 40px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.container::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    background: linear-gradient(to bottom, #0a2a43, transparent);
+    z-index: 1000;
+}
+.film{
+    transition: all 1s ease;
+    transform-style: preserve-3d;
+    perspective: 500px;
+    position: relative;
+    margin: 40px 40px;
+    margin-top: 60px;
+    height: 320px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: #00000050 1px 3px 12px 3px;
+}
+.filmcover{
+    float: left;
+    position: absolute;
+    overflow: hidden;
+    height: 100%;
+    width: 480px;
+}
+.filmcover img{
+    /* 如果加在hover上，没有离开特效，此属性不继承*/
+    transition: all 1s ease;
+    height: 100%;
+}
+.film .text{
+    float: right;
+    background-color: aquamarine;
+    margin: 40px 30px;
+    height: 80%;
+    width: 580px;
+}
+.film:hover .filmcover img{
+    transform: rotateZ(6deg);
+    scale: 1.15;
+}
+.film:hover{
+    box-shadow: #0000006e 1px 8px 12px 5px;
+}
+@keyframes appear {
+    0% {opacity: 0; transform: translateY(200px);}
+    20% {opacity: 0.1;}
+    100% {opacity: 1; transform: translateY(0);}
+}
+.backtop{
+    position: fixed;
+    float: right;
+    width: 70px;
+    height: 79vh;
+    left: 91%;
+    z-index: 100000;
+    overflow: hidden;
+    background-image: url(../material/img/scroll.png);
+    background-position: 0px 60000px;
+    transform: translateY(-79vh);
+    transition: all 1s ease;
+}

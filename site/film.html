@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../css/film.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    </head>
+    <body>
+        <a href="#top">
+            <div class="backtop">
+            </div>
+        </a>
+        <section class="bigImage" id="top">
+            <img src="../material/img/mountain-back.png" alt="" id="backMountain">
+            <img src="../material/img/mountain-front .png" alt="" id="frontMountain">
+            <img src="../material/img/moon.png" alt="" id="moon">
+            <h2 id="text">Film</h2>
+        </section>
+        <div class="container">
+            <h3>Comment & Idea</h3>
+            <div class="film">
+                <div class="filmcover"><img src="../material/img/DSC_5881.JPG" alt=""></div>
+                <div class="text">
+                </div>
+            </div>
+            <div class="film">
+                <div class="filmcover"><img src="../material/img/DSC_5881.JPG" alt=""></div>
+                <div class="text">
+                </div>
+            </div>
+            <div class="film">
+                <div class="filmcover"><img src="../material/img/DSC_5881.JPG" alt=""></div>
+                <div class="text">
+                </div>
+            </div>
+        </div>
+        <script>
+            // 滚动动画
+            let moon = document.querySelector('#moon')
+            let backMountain = document.querySelector('#backMountain')
+            let frontMountain = document.querySelector('#frontMountain')
+            let text = document.querySelector('#text')
+            window.addEventListener('scroll',function(){
+                let len = window.scrollY; //获取y轴的滚动距离
+                backMountain.style.top = len * 0.3 + 'px';
+                frontMountain.style.top = len * 0.15 + 'px';
+                moon.style.right = (len * 0.7+60) + 'px';
+                text.style.top = (len*0.4+100) + 'px';
+            })
+            
+
+            // 滑到指定位置动画
+            function getElementTop(el) {
+                if (el.offsetParent) { //返回父元素到父元素的高度
+                    return this.getElementTop(el.offsetParent) + el.offsetTop
+                }
+                return el.offsetTop //返回到父元素的高度
+            }
+            let filmList = document.querySelectorAll('.film')
+            for(let i = 0; i < filmList.length; i++){
+                $(window).scroll(function(){
+                    if($(window).scrollTop() + 800 > getElementTop(filmList[i])){
+                        // 不要再引号里加分号
+                        filmList[i].style.animation = 'appear 1s linear';
+                        // filmList[i].style.height = '200px';
+                    }else{
+                        // 让效果能重复触发
+                        filmList[i].style.animation = 'none';
+                    }
+                })
+            }
+
+            //返回顶部动画
+            let backtop = document.querySelector('.backtop');
+            $(window).scroll(function(){
+                if($(window).scrollTop() > 300){
+                    backtop.style.transform = 'translateY(0)';
+                }else{
+                    backtop.style.transform = 'translateY(-79vh)';
+                }
+            })
+        </script>
+    </body>
+</html>
